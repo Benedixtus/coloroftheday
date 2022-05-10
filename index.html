@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body {
+                background-color: white;
+                }
+            button {
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background-color: transparent;
+                background-repeat: no-repeat;
+                border: 3px solid black;
+                border-radius: 0;
+                font-size: 150%;
+                text-decoration: none;
+                outline: none;
+            }
+    </style>
+</head>
+<body id="changing">
+    <button id="changer" onclick="randomcolor()">Click me for a color!</button>
+
+    <script>
+
+        function randomcolor() {
+            var color = "rgba(";
+            for (var i = 0; i < 3; i++){
+                
+            color +=  Math.floor(Math.random() * 256) + ",";
+            }
+            color += " 1)";
+            document.getElementById("changing").style.backgroundColor = color;
+
+        }
+
+    </script>
+</body>
+</html>
