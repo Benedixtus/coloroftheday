@@ -1,0 +1,13 @@
+Szóval, az alapötlet az volt, hogy:
+Legyen egy oldal amin ha megnyomunk egy gombot, akkor az visszaad egy teljesen random színt, 
+és ezt ismételve sosem kapjuk ugyanazt, ami eléggé valószínű, mivel 1/(256*256*256) egy elég kicsi valószínűség (0.000000059604644775390625),
+ami mellesleg kiadja az RGB színek teljességét, ami 16,777,216.
+
+Na, de ez csak az alapötlet, ami talán felhasználható egy "rainbow" feature-re.
+
+A nagy idea az az, hogy a szín mégse változzon teljesen randomul, hanem a kliens helyét, idejét és időjárását bekérve számolja ki, hogy éppen milyen napszak van,
+volt e már napkelte, milyen takart lehet a nap és ezek alapján adjon vissza egy (még mindig random) színsémát ami tükrözi az ottani fényviszonyok és idő atmoszféráját.
+Véletlenszerűen mozgó homályos divekkel lehetne imitálni a felhőket, ködöt vagy hasonlókat, csak hogy ne legyen az oldal statikus, ezek a kiszámított szín szomszédos árnyalatai lennének.
+
+Valamint a Holdas projekttel párhuzamosan implementálni lehet bele egy órakijelzőt, jelenlegi hőfokot és egyéb adatokat, valamint holdkelte előtt egy órával megjelenhetne információ is a holdról.
+Az infókra kattintva a szélről összehúzódna egy div, amelynek a háttere szürke, de a közepén vagy jobb szélén van egy lyuk olyan formával, amilyen infó kijelzésre kerül (Nap v Hold obviously). 
