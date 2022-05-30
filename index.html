@@ -20,30 +20,110 @@
                 font-size: 150%;
                 text-decoration: none;
                 outline: none;
+                z-index: 5;
             }
+            .cloud {
+                background-color: none;
+                border-radius: 50%;
+                box-shadow: 0px 0px 300px 150px black;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                animation-name: morph2;
+                animation-duration: 15s;
+                animation-iteration-count: infinite;
+                transition: 6s;
+            }
+            #cloud1 {
+                z-index: 1;
+                height: 1px;
+                width: 1px;
+                top: 10%;
+                left: 10%;
+            }
+            
+            #cloud2 {
+                z-index: 2;
+                height: 0;
+                width: 10%;
+                top: 60%;
+                left: 10%;
+            }
+            #cloud3 {
+                z-index: 3;
+                height: 0;
+                width: 10%;
+                top: 40%;
+                left: 50%;
+            }
+            #cloud4 {
+                z-index: 4;
+                height: 0;
+                width: 10%;
+                top: 10%;
+                left: 80%;
+            }
+            @keyframes morph1 {
+                0% {transform: rotate(0deg);}
+                100% {transform: rotate(180deg);}
+                100% {transform: rotate(359deg);}
+            }
+            @keyframes morph2 {
+                0% {transform: rotate(359deg);}
+                100% {transform: rotate(180deg);}
+                100% {transform: rotate(0deg);}
+            }
+
+
+
     </style>
 </head>
 <body id="changing">
     <button id="changer" onclick="randomcolor()">Click me for a color!</button>
-
+    <div class="cloud" id="cloud1"></div>
+    <div class="cloud" id="cloud2"></div>
+    <div class="cloud" id="cloud3"></div>
+    <div class="cloud" id="cloud4"></div>
     <script>
 
         function randomcolor() {
             var color = "rgba(";
             var border = "rgba(";
+            var lamp = "rgba(";
             for (var i = 0; i < 3; i++){
                 random = Math.floor(Math.random() * 256);
                 color +=  random + ",";
                 random = random - 100;
                 border += random + ", ";
+                random = random -50;
+                lamp += random+ ", ";
                 }
             color += " 1)";
             border += " 1)";
+            lamp += " 1)";
             document.getElementById("changing").style.backgroundColor = color;
             document.getElementById("changer").style.borderColor = border;
-
+            for( var i = 0; i < 4; i++) {
+                var id = "cloud" + (i+1);
+                console.log(id);
+                document.getElementById(id).style.backgroundColor = color;
+                document.getElementById(id).style.boxShadow = "0px 0px " + (200 + Math.floor(Math.random() * 500) ) + "px 80px "+lamp;
+            }
         }
+        function randomplaces() {
+                for(var i =0; i < 100;i++){
+                    setTimeout(function(){
+                        for(var j = 0; j<4;j++){
+                            var id = "cloud" + (j+1);
+                            document.getElementById(id).style.top = ( 20 + Math.floor(Math.random() * 50)) + "%";
+                            document.getElementById(id).style.left = ( 20 + Math.floor(Math.random() * 50)) + "%";
+                        }
+                    }, 120000*i)
+                };
+            }
 
+        randomplaces();
+            
     </script>
 </body>
 </html>
